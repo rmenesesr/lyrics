@@ -5,10 +5,10 @@
     <body>
     
       <ul>Valor por Kilómetro : $500 </ul>
-        <li>Distancia del Viaje : <input id="dist" type="number" min=1 step="5"></input></li>
-        <li >Propina %: <input id="coin" type="number" min=1></li>
+      <li>Distancia del Viaje : <input id="dist" type="number" min=1 step="5"></input></li>
+      <li >Propina %: <input id="coin" type="number" min=1></li>
       </ul>
-        <div><li id="cost">Total:<textarea id="total">   </textarea></div>
+        <div><li id="cost">Total:<textarea id="total" required>   </textarea></div>
         
     
     <align="left"><button id="boton" type="button" onclick="">Calcular</align="left"></button>
@@ -16,11 +16,17 @@
         let output = document.getElementById("total")
         document.getElementById("boton").addEventListener("click", calcular);
         
+        
         function calcular() {
             let tot = (500 * parseInt(document.getElementById("dist").value));
             let comision = (tot * parseInt(document.getElementById("coin").value)) / 100;
-            let total = comision + tot;
-            output.value = total;
+            if (comision < 0){
+                alert("La propina debe ser igual o mayor a cero");
+            }else{
+                let total = comision + tot;
+                output.value = total;
+            }
+            
         }
     </script>
 </body>
