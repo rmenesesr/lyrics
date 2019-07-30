@@ -24,16 +24,19 @@
         }
                 
         function valCoin() { 
-            let distance = (document.getElementById("dist").value);
+            let distance = (document.getElementById("coin").value);
             if (distance < 0) {
                 alert("La propina debe ser igual o mayor a cero");
+                document.getElementById("coin").value="0";
             }
         }
         function valDist() {
             let money = (document.getElementById("dist").value);
             if (money < 0) {
                 alert("La distancia debe ser igual o mayor a cero");
+                document.getElementById("dist").value="0";
             }
+           
         }
         
     </script>
