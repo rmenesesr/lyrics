@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Calcula valor Uber</title>
+    </head>
+    <body>
+    
+      <ul><align="left">Valor por Kilómetro : $500</align="left"> </ul>
+      <li>Distancia del Viaje : <input id="dist" type="number" min=0></input></li>
+      <li >Propina %: <input id="coin" type="number" min=0></li>
+      </ul>
+      <div><li id="cost">Total:<textarea id="total" required>   </textarea></div>
+      <align="left"><button id="boton" type="button" onclick="">Calcular</align="left"></button>
+    <script>
+        document.getElementById("dist").addEventListener("change", valDist);
+        document.getElementById("coin").addEventListener("change", valCoin);
+        document.getElementById("boton").addEventListener("click", calcular);
+        output = document.getElementById("total")
+        
+        function calcular() {
+            let tot = (500 * parseInt(document.getElementById("dist").value));
+            let comision = (tot * parseInt(document.getElementById("coin").value)) / 100;
+            let total = comision + tot;
+            output.value = total;
+        }
+                
+        function valCoin() { 
+            let distance = parseInt(document.getElementById("dist"));
+            if (distance < 0){
+                alert("La propina debe ser igual o mayor a cero");
+            }
+        }
+        function valDist() {
+            let money = parseInt(document.getElementById("dist"));
+            if (money < 0) {
+                alert("La distancia debe ser igual o mayor a cero");
+            }
+        }
+        
+    </script>
+    </body>
+
+</html>
