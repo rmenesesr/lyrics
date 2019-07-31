@@ -23,8 +23,9 @@
     <script>
 
         let uType = document.getElementById("uberType");
+        output2 = document.getElementById("text");
         uType.addEventListener("change", costDist);
-        output2 = document.getElementById("text");  
+        //output2 = document.getElementById("text");  
         document.getElementById("dist").addEventListener("change", valDist);
         document.getElementById("coin").addEventListener("change", valCoin);
         document.getElementById("boton").addEventListener("click", calcular);
@@ -53,28 +54,33 @@
             }
         }
         function costDist() {
+            
             let i = uType.options.selectedIndex;
             let id = uType.options[i].getAttribute("id"); 
                        
             if (id == "1") {
-                alert("sii")
-                let output2 = 500;
-                //let output2 = val;
-                //output2.value = val;
+                let cost = 500;
+                //let output2 = cost;
+                output2.value = cost;
+                //output2 = document.getElementById("text");
+                
             }else {
             if (id == "2") {
                 let cost = 1000;
-                let output2 = cost;
-                output2 = document.getElementById("text");
+                output2.value = cost;
+                
+                                
             }else {
                if (id == "3") {
                 let cost = 1500;
-                let output2 = cost;
-                output2 = document.getElementById("text");
+                output2.value = cost;
+               // output2 = document.getElementById("text");
+                                
                }else {
                 let cost = 2000;
-                let output2 = cost;
-                output2 = document.getElementById("text");
+                output2.value = cost;
+                //output2 = document.getElementById("text");
+                                
                }
             }
          }
