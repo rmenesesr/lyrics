@@ -21,18 +21,16 @@
         <align="left"><button id="boton" type="button" onclick="">Calcular</align="left"></button>
         
     <script>
-        
-        output2 = document.getElementById("text"); 
-        
+
+        let uType = document.getElementById("uberType");
+        uType.addEventListener("change", costDist);
+        output2 = document.getElementById("text");  
         document.getElementById("dist").addEventListener("change", valDist);
         document.getElementById("coin").addEventListener("change", valCoin);
-        
         document.getElementById("boton").addEventListener("click", calcular);
         output = document.getElementById("total");
-        let uType = document.getElementById("uberType");
-        uType.addEventListener("change", costDist)
         
-            
+                    
         function calcular() {
             let tot = (500 * parseInt(document.getElementById("dist").value));
             let comision = (tot * parseInt(document.getElementById("coin").value)) / 100;
@@ -57,19 +55,19 @@
         function costDist() {
             let i = uType.options.selectedIndex;
             let id = uType.options[i].getAttribute("id"); 
-            let dist = uType[id];
-            
-            if (uType == "1") {
-                let val = 500;
-                let output2 = val;
-                output2.value = val;
+                       
+            if (id == "1") {
+                alert("sii")
+                let output2 = 500;
+                //let output2 = val;
+                //output2.value = val;
             }else {
-            if (uType == "2") {
+            if (id == "2") {
                 let cost = 1000;
                 let output2 = cost;
                 output2 = document.getElementById("text");
             }else {
-               if (uType == "3") {
+               if (id == "3") {
                 let cost = 1500;
                 let output2 = cost;
                 output2 = document.getElementById("text");
