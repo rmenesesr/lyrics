@@ -4,7 +4,7 @@
     </head>
     <body>
     
-      <select id="uberType" onchange="uberType();">
+      <select id="uberType">
             <option id="0" disabled selected>---Seleccione tipo de Uber---</option>
             <option id="1">Uber</option>
             <option id="2">Uber Light</option>
@@ -12,32 +12,27 @@
             <option id="4">Uber XL</option>
       </select>
       <br>
-        <input type="text" id="txtvalue">
-
+        
         <div>Valor por Kilómetro  :    <textarea id="text">      </textarea></div>
         <li>Distancia del Viaje : <input id="dist" type="number" min=0></input></li><br>
         <li >Propina %: <input id="coin" type="number" min=0></li><br>
-        </ul>
+        
         <div><li id="cost">Total:<textarea id="total">   </textarea></div><br>
         <align="left"><button id="boton" type="button" onclick="">Calcular</align="left"></button>
         
     <script>
-        //let uType = document.getElementById("uberType");
-        document.getElementById("uberType").addEventListener("change", costDist);
+        
         output2 = document.getElementById("text"); 
-        //output2 = document.getElementById("text");
+        
         document.getElementById("dist").addEventListener("change", valDist);
         document.getElementById("coin").addEventListener("change", valCoin);
-        //document.getElementById("coin").addEventListener("change", calculate);
+        
         document.getElementById("boton").addEventListener("click", calcular);
         output = document.getElementById("total");
+        let uType = document.getElementById("uberType");
+        uType.addEventListener("change", costDist)
         
-        function uberType() {
-            var uType = document.getElementById("uberType");
-            var displaytext = uType.options[uType.selectedIndex].text;
-            //document.getElementById("txtvalue").value = displaytext;
-        }
-                
+            
         function calcular() {
             let tot = (500 * parseInt(document.getElementById("dist").value));
             let comision = (tot * parseInt(document.getElementById("coin").value)) / 100;
@@ -60,8 +55,10 @@
             }
         }
         function costDist() {
-            var uType = document.getElementById("uberType");
-            //var displaytext = uType.options[uType.selectedIndex].text;
+            let i = uType.options.selectedIndex;
+            let id = uType.options[i].getAttribute("id"); 
+            let dist = uType[id];
+            
             if (uType == "1") {
                 let val = 500;
                 let output2 = val;
