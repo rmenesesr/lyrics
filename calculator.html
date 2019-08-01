@@ -3,7 +3,6 @@
         <title>Calcula valor Uber</title>
     </head>
     <body>
-    
       <select id="uberType">
             <option id="0" disabled selected>---Seleccione tipo de Uber---</option>
             <option id="1">Uber</option>
@@ -12,33 +11,29 @@
             <option id="4">Uber XL</option>
       </select>
       <br>
-        
-        <div>Valor por Kilómetro  :    <textarea id="text">      </textarea></div>
+        <div>Valor por Kilómetro  :    <textarea id="text">   </textarea></div>
         <li>Distancia del Viaje : <input id="dist" type="number" min=0></input></li><br>
         <li >Propina %: <input id="coin" type="number" min=0></li><br>
-        
         <div><li id="cost">Total:<textarea id="total">   </textarea></div><br>
         <align="left"><button id="boton" type="button" onclick="">Calcular</align="left"></button>
         
     <script>
-
         let uType = document.getElementById("uberType");
         output2 = document.getElementById("text");
         uType.addEventListener("change", costDist);
-        //output2 = document.getElementById("text");  
         document.getElementById("dist").addEventListener("change", valDist);
         document.getElementById("coin").addEventListener("change", valCoin);
         document.getElementById("boton").addEventListener("click", calcular);
         output = document.getElementById("total");
         
-                    
         function calcular() {
-            let tot = (500 * parseInt(document.getElementById("dist").value));
+            kmprice = output2.value;
+            let tot = (kmprice * parseInt(document.getElementById("dist").value));
             let comision = (tot * parseInt(document.getElementById("coin").value)) / 100;
             let total = comision + tot;
             output.value = total;
+            console.log(kmprice, comision);
         }
-                
         function valCoin() { 
             let distance = (document.getElementById("coin").value);
             if (distance < 0) {
@@ -54,39 +49,29 @@
             }
         }
         function costDist() {
-            
             let i = uType.options.selectedIndex;
             let id = uType.options[i].getAttribute("id"); 
-                       
+           
             if (id == "1") {
                 let cost = 500;
-                //let output2 = cost;
                 output2.value = cost;
-                //output2 = document.getElementById("text");
-                
             }else {
+
             if (id == "2") {
                 let cost = 1000;
-                output2.value = cost;
-                
-                                
+                output2.value = cost;       
             }else {
+               
                if (id == "3") {
                 let cost = 1500;
-                output2.value = cost;
-               // output2 = document.getElementById("text");
-                                
+                output2.value = cost;        
                }else {
                 let cost = 2000;
-                output2.value = cost;
-                //output2 = document.getElementById("text");
-                                
+                output2.value = cost;    
                }
             }
          }
-        }
-      
+        }  
     </script>
   </body>
-
 </html>
